@@ -16,8 +16,7 @@ RUN apt-get install -y git bash build-essential flex bc \
 RUN useradd -m -s /bin/bash itzkaguya && \
     useradd -m -s /bin/bash renelzx && \
     useradd -m -s /bin/bash rsuntk && \
-    useradd -m -s /bin/bash brokenedtz && \
-    useradd -m -s /bin/bash gitpod
+    useradd -m -s /bin/bash brokenedtz
 
 # Add users to sudo group and configure sudoers
 RUN usermod -aG sudo itzkaguya && \
@@ -29,6 +28,9 @@ RUN usermod -aG sudo itzkaguya && \
     echo "rsuntk ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     echo "brokenedtz ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     echo "gitpod ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN groupmod -g 33333 gitpod || groupadd -g 33333 gitpod && \
+    usermod -u 33333 -g 33333 gitpod || useradd -u 33333 -g 33333 -m -s /bin/bash gitpod
 
 # Switch back to the gitpod user to allow normal operations in Gitpod
 USER gitpod
