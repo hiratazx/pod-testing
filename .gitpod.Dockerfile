@@ -19,24 +19,19 @@ RUN useradd -m -s /bin/bash itzkaguya && \
     useradd -m -s /bin/bash brokenedtz && \
     useradd -m -s /bin/bash gitpod
 
-# Add users to sudo group
+# Add users to sudo group and configure sudoers
 RUN usermod -aG sudo itzkaguya && \
     usermod -aG sudo renelzx && \
     usermod -aG sudo rsuntk && \
     usermod -aG sudo brokenedtz && \
-    usermod -aG sudo gitpod
-
-# Configure sudoers file to allow these users to use sudo without a password
-RUN echo "itzkaguya ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    echo "itzkaguya ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     echo "renelzx ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     echo "rsuntk ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    echo "brokenedtz ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    echo "brokenedtz ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    echo "gitpod ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Switch back to the gitpod user to allow normal operations in Gitpod
 USER gitpod
-
-# Ensure Gitpod user can use sudo
-RUN echo "gitpod ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Set the custom hostname when a new bash session starts
 RUN echo "yukiprjkt-pod" >> /etc/bash.bashrc
