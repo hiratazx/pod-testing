@@ -1,0 +1,20 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: "Set Hostname and Start Bash"
+    command: |
+      echo "Setting custom hostname..."
+      sudo hostnamectl set-hostname my-custom-hostname
+      exec bash
+
+vscode:
+  extensions:
+    - ms-python.python
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
+
+# Ports section (if your app exposes ports, for example)
+ports:
+  - port: 3000
+    onOpen: open-preview
