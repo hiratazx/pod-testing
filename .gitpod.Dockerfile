@@ -33,8 +33,5 @@ RUN usermod -aG sudo itzkaguya && \
 # Switch back to the gitpod user to allow normal operations in Gitpod
 USER gitpod
 
-# Set the custom hostname when a new bash session starts
-RUN echo "yukiprjkt-pod" >> /etc/bash.bashrc
-
 # Set default working directory
 WORKDIR /workspace
