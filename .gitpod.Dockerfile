@@ -16,13 +16,15 @@ RUN apt-get install -y git bash build-essential flex bc \
 RUN useradd -m -s /bin/bash itzkaguya && \
     useradd -m -s /bin/bash renelzx && \
     useradd -m -s /bin/bash rsuntk && \
-    useradd -m -s /bin/bash brokenedtz
+    useradd -m -s /bin/bash brokenedtz && \
+    useradd -m -s /bin/bash gitpod
 
 # Add users to sudo group
 RUN usermod -aG sudo itzkaguya && \
     usermod -aG sudo renelzx && \
     usermod -aG sudo rsuntk && \
-    usermod -aG sudo brokenedtz
+    usermod -aG sudo brokenedtz && \
+    usermod -aG sudo gitpod
 
 # Configure sudoers file to allow these users to use sudo without a password
 RUN echo "itzkaguya ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \

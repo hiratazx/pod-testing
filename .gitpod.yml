@@ -5,7 +5,7 @@ tasks:
   - name: "Set Hostname and Start Bash"
     command: |
       echo "Setting custom hostname..."
-      sudo hostnamectl set-hostname my-custom-hostname
+      sudo hostnamectl set-hostname yukiprjkt-pod
       exec bash
 
 vscode:
