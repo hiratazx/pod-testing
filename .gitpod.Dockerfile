@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 # Install other necessary packages
 RUN apt-get install -y git bash build-essential flex bc \
-    bison cpio gcc xmlstarlet xattr acl aria2 wget curl
+    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano
 
 # Create users with no passwords and default shell as bash
 RUN useradd -m -s /bin/bash itzkaguya && \
