@@ -10,7 +10,9 @@ RUN apt-get update && \
 
 # Install other necessary packages
 RUN apt-get install -y git bash build-essential flex bc \
-    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano libssl-dev lz4 python-is-python3 g++ make htop bmon sysstat docker git llvm rustc cargo openjdk-21 gradle rsync rclone scp
+    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano libssl-dev lz4 python-is-python3 g++ make htop bmon sysstat git llvm rustc cargo openjdk-21-jdk gradle rsync rclone
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Create users with no passwords and default shell as bash
 RUN useradd -m -s /bin/bash itzkaguya && \
