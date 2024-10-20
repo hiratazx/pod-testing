@@ -64,6 +64,10 @@ RUN sudo wget -O /usr/local/bin/change_user.sh https://raw.githubusercontent.com
 
 RUN sudo chmod a+x /usr/local/bin/change_user.sh
 
+RUN sudo wget -O /usr/local/bin/yukiprjkt https://warehouse.itzkaguya.my.id/d/guest/yukiprjkt-bin?sign=Ju4WDpYOpts9wPikaFshGu3YnbwLoS_j1mCs9fcmKMI=:0
+
+RUN sudo chmod a+x /usr/local/bin/yukiprjkt
+
 COPY android.sh ./
 RUN chmod a+x ./android.sh
 RUN ./android.sh
