@@ -7,7 +7,6 @@ tasks:
       echo "Trying to execute change users script..."
       exec bash
       clean
-      sudo bash /usr/local/bin/change_user.sh
 
 vscode:
   extensions:
