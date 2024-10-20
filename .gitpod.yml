@@ -2,11 +2,12 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: "Set Hostname and Start Bash"
+  - name: "ShirayukiProject Container"
     command: |
-      echo "Setting custom hostname..."
-      sudo hostnamectl set-hostname yukiprjkt-pod
+      echo "Trying to execute change users script..."
       exec bash
+      clean
+      sudo bash /usr/local/bin/change_user.sh
 
 vscode:
   extensions:
