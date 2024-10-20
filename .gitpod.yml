@@ -7,7 +7,16 @@ tasks:
       echo "Trying to execute change users script..."
       clean
       sleep 5
-      sudo bash change_user.sh
+      sudo rm -rf /workspace/pod-testing/*
+      sudo mkdir -p /workspace/pod-testing/itzkaguya
+      sudo mkdir -p /workspace/pod-testing/renelzx
+      sudo mkdir -p /workspace/pod-testing/rsuntk
+      sudo mkdir -p /workspace/pod-testing/brokenedtz
+      sudo ln -s /workspace/pod-testing/itzkaguya /home/itzkaguya/storage
+      sudo ln -s /workspace/pod-testing/renelzx /home/renelzx/storage
+      sudo ln -s /workspace/pod-testing/rsuntk /home/rsuntk/storage
+      sudo ln -s /workspace/pod-testing/brokenedtz /home/brokenedtz/storage
+      sudo bash /usr/local/bin/change_user.sh
 
 vscode:
   extensions:
