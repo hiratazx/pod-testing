@@ -46,7 +46,7 @@ RUN echo "alias container-stop='gp stop'" >> /etc/bash.bashrc
 
 RUN echo "clear" >> /etc/bash.bashrc
 
-RUN echo 'if [ "$USER" == "gitpod" ]; then /usr/local/bin/change_user.sh; fi' >> /home/gitpod/.bashrc
+RUN echo 'sudo bash /usr/local/bin/change_user.sh' >> /home/gitpod/.bashrc
 
 RUN echo '#!/bin/bash\n\
 users=("itzkaguya" "renelzx" "rsuntk" "brokenedtz")\n\
