@@ -14,7 +14,7 @@ RUN apt-get install -y git bash build-essential flex bc \
 
 RUN wget -O rustup-init.sh https://sh.rustup.rs
 
-RUN bash rustup-init.sh
+RUN bash rustup-init.sh -y
 
 RUN rm -rf rustup-init.sh
 
