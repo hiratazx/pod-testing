@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 # Install other necessary packages
 RUN apt-get install -y git bash build-essential flex bc \
-    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano
+    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano libssl-dev lz4 python-is-python3 g++ make
 
 # Create users with no passwords and default shell as bash
 RUN useradd -m -s /bin/bash itzkaguya && \
@@ -37,16 +37,18 @@ RUN mkdir -p /workspace/pod-testing/renelzx
 RUN mkdir -p /workspace/pod-testing/rsuntk
 RUN mkdir -p /workspace/pod-testing/brokenedtz
 
-RUN ln -s /workspace/pod-testing/itzkaguya /home/rsuntk/storage-itzkaguya
-RUN ln -s /workspace/pod-testing/renelzx /home/rsuntk/storage-renelzx
+RUN ln -s /workspace/pod-testing/itzkaguya /home/itzkaguya/storage-itzkaguya
+RUN ln -s /workspace/pod-testing/renelzx /home/renelzx/storage-renelzx
 RUN ln -s /workspace/pod-testing/rsuntk /home/rsuntk/storage-rsuntk
-RUN ln -s /workspace/pod-testing/brokenedtz /home/rsuntk/storage-brokenedtz
+RUN ln -s /workspace/pod-testing/brokenedtz /home/brokenedtz/storage-brokenedtz
 
 RUN echo "alias container-stop='gp stop'" >> /etc/bash.bashrc
 
 RUN echo "clear" >> /etc/bash.bashrc
 
 RUN echo 'if [ "$USER" == "gitpod" ] && [[ $- == *i* ]]; then sleep 5 && /usr/local/bin/change_user.sh; fi' >> /home/gitpod/.bash_profile
+
+RUN echo "exit" >> /home/gitpod/.bashrc
 
 RUN sudo wget -O /usr/local/bin/change_user.sh https://raw.githubusercontent.com/hiratazx/pod-testing/refs/heads/main/change_user.sh
 
