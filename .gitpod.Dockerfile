@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 # Install other necessary packages
 RUN apt-get install -y git bash build-essential flex bc \
-    bison cpio gcc xmlstarlet xattr acl
+    bison cpio gcc xmlstarlet xattr acl aria2 wget curl
 
 # Create users with no passwords and default shell as bash
 RUN useradd -m -s /bin/bash itzkaguya && \
@@ -48,47 +48,9 @@ RUN echo "clear" >> /etc/bash.bashrc
 
 RUN echo 'sudo bash /usr/local/bin/change_user.sh' >> /home/gitpod/.bashrc
 
-RUN echo '#!/bin/bash\n\
-users=("itzkaguya" "renelzx" "rsuntk" "brokenedtz")\n\
-length=${#users[@]}\n\
-display_menu() {\n\
-    clear\n\
-    echo "Select a user to switch (use Up/Down arrow keys and Enter):"\n\
-    for i in "${!users[@]}"; do\n\
-        if [ "$i" -eq "$selected" ]; then\n\
-            echo -e "\e[1;32m> ${users[$i]}\e[0m"\n\
-        else\n\
-            echo "  ${users[$i]}"\n\
-        fi\n\
-    done\n\
-}\n\
-selected=0\n\
-while true; do\n\
-    display_menu\n\
-    read -rsn3 key\n\
-    case "$key" in\n\
-        $'\''\x1b[A'\'')\n\
-            if [ "$selected" -gt 0 ]; then\n\
-                ((selected--))\n\
-            else\n\
-                selected=$((length - 1))\n\
-            fi\n\
-            ;;\n\
-        $'\''\x1b[B'\'')\n\
-            if [ "$selected" -lt $((length - 1)) ]; then\n\
-                ((selected++))\n\
-            else\n\
-                selected=0\n\
-            fi\n\
-            ;;\n\
-        "")\n\
-            chosen_user="${users[$selected]}"\n\
-            echo "Switching to user: $chosen_user"\n\
-            sudo -u "$chosen_user" -i\n\
-            exit\n\
-            ;;\n\
-    esac\n\
-done\n' > /usr/local/bin/change_user.sh && chmod +x /usr/local/bin/change_user.sh
+RUN sudo wget -O /usr/local/bin/change_user.sh https://raw.githubusercontent.com/hiratazx/pod-testing/refs/heads/main/change_user.sh
+
+RUN sudo chmod a+x /usr/local/bin/change_user.sh
 
 # Switch back to the gitpod user to allow normal operations in Gitpod
 USER gitpod
