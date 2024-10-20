@@ -16,7 +16,7 @@ RUN apt-get install -y --fix-missing ccache jq openssh-server screen python3 pyt
     git git-lfs android-tools-adb bc bison build-essential curl flex gh g++-multilib gcc-multilib gnupg \
     gperf imagemagick lib32ncurses-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev \
     libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev \
-    libtinfo5 libncurses5 mosh tmux xattr nano wget locales ncdu zsh rclone w3m neofetch htop bmon ripgrep zoxide neovim vim zsh duf aria2 
+    mosh tmux xattr nano wget locales ncdu zsh rclone w3m neofetch htop bmon ripgrep zoxide neovim vim zsh duf aria2 
 
 RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash && apt-get install -y speedtest-cli
 
