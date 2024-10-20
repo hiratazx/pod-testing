@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 # Install other necessary packages
 RUN apt-get install -y git bash build-essential flex bc \
-    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano libssl-dev lz4 python-is-python3 g++ make
+    bison cpio gcc xmlstarlet xattr acl aria2 wget curl nano libssl-dev lz4 python-is-python3 g++ make htop bmon sysstat docker git llvm rustc cargo openjdk-21 gradle rsync rclone scp
 
 # Create users with no passwords and default shell as bash
 RUN useradd -m -s /bin/bash itzkaguya && \
@@ -46,9 +46,11 @@ RUN echo "alias container-stop='gp stop'" >> /etc/bash.bashrc
 
 RUN echo "clear" >> /etc/bash.bashrc
 
-RUN echo 'if [ "$USER" == "gitpod" ] && [[ $- == *i* ]]; then sleep 5 && /usr/local/bin/change_user.sh; fi' >> /home/gitpod/.bash_profile
+RUN echo 'bash /usr/local/bin/change_user.sh' >> /home/gitpod/.bash_profile
 
-RUN echo "exit" >> /home/gitpod/.bashrc
+RUN echo 'exit' >> /home/gitpod/.bashrc
+
+RUN echo 'sudo bash /usr/local/bin/change_user.sh' >> /home/gitpod/.bashrc
 
 RUN sudo wget -O /usr/local/bin/change_user.sh https://raw.githubusercontent.com/hiratazx/pod-testing/refs/heads/main/change_user.sh
 
