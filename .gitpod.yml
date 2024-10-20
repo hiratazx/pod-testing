@@ -8,7 +8,9 @@ tasks:
       clean
       sleep 5
       sudo rm -rf .gitpod.Dockerfile .gitpod.yml change_user.sh README.md
-      sudo bash /usr/local/bin/change_user.sh && clear && exit
+      sudo bash /usr/local/bin/change_user.sh
+      clear
+      exit
 
 vscode:
   extensions:

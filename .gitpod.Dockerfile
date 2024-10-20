@@ -52,12 +52,6 @@ RUN echo "alias container-stop='gp stop'" >> /etc/bash.bashrc
 
 RUN echo "clear" >> /etc/bash.bashrc
 
-RUN echo 'bash /usr/local/bin/change_user.sh' >> /home/gitpod/.bash_profile
-
-RUN echo 'exit' >> /home/gitpod/.bashrc
-
-RUN echo 'sudo bash /usr/local/bin/change_user.sh' >> /home/gitpod/.bashrc
-
 RUN sudo wget -O /usr/local/bin/change_user.sh https://raw.githubusercontent.com/hiratazx/pod-testing/refs/heads/main/change_user.sh
 
 RUN sudo chmod a+x /usr/local/bin/change_user.sh
