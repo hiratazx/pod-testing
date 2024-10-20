@@ -5,7 +5,6 @@ tasks:
   - name: "ShirayukiProject Container"
     command: |
       echo "Trying to execute change users script..."
-      exec bash
       clean
       sleep 5
       sudo bash change_user.sh
